@@ -58,7 +58,7 @@ public class InteractiveBuild : MonoBehaviour
         playerBase = GetComponent<Base>();
         if (buildingIcon)
         {
-            sBuildingIcon = Instantiate(buildingIcon, transform.position, buildingIcon.transform.rotation);
+            sBuildingIcon = Instantiate(buildingIcon, new Vector3(transform.position.x, buildArea.transform.position.y, transform.position.z), buildingIcon.transform.rotation);
             
             if (sBuildingIcon)
             {
@@ -110,11 +110,11 @@ public class InteractiveBuild : MonoBehaviour
                         var currentPos = mouseHit.point;
                         if (isRotated)
                         {                     
-                            sBuildingIcon.transform.position = new Vector3(oldBuildIconPos.x, currentPos.y, currentPos.z);
+                            sBuildingIcon.transform.position = new Vector3(oldBuildIconPos.x, buildArea.transform.position.y, currentPos.z);
                         }
                         else //Snapping Z axis
                         {
-                            sBuildingIcon.transform.position = new Vector3(currentPos.x, currentPos.y, oldBuildIconPos.z);
+                            sBuildingIcon.transform.position = new Vector3(currentPos.x, buildArea.transform.position.y, oldBuildIconPos.z);
                         }
                         // Add initial building to sBuildingIcon
                         if (!iniBuilding)
